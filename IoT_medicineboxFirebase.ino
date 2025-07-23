@@ -35,7 +35,7 @@ void setup() {
 
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
-    for (;;); // Don't proceed if OLED fails
+    for (;;); 
   }
   display.clearDisplay();
   display.setTextSize(2); 
@@ -72,7 +72,6 @@ void loop() {
   bool currentSlot3State = digitalRead(REED_PIN_SLOT3);
 
   // Slot 2 opened
-  // Check for a transition from HIGH (closed) to LOW (opened)
   if (lastSlot2State == HIGH && currentSlot2State == LOW) {
     lastTaken = "Slot 2";
     nextDose = "Slot 3";
@@ -86,8 +85,7 @@ void loop() {
     delay(1000); 
   }
 
-  // Slot 3 opened
-  // Check for a transition from HIGH (closed) to LOW (opened)
+  // Slot 3 opened  
   if (lastSlot3State == HIGH && currentSlot3State == LOW) {
     lastTaken = "Slot 3";
     nextDose = "Slot 2";
